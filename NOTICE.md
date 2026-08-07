@@ -2,7 +2,7 @@
 
 ## Purpose and status
 
-This directory is the public, code-free recruiter case study authorized by the exact Stage 1 case-study-only phrase. It contains static portfolio narrative and synthetic visual material only. The public repository has been created; GitHub Pages remains pending deployment and anonymous verification.
+This directory is the public, code-free recruiter case study authorized by the exact Stage 1 case-study-only phrase. It contains static portfolio narrative and synthetic visual material only. The public repository and GitHub Pages site have been created and anonymously verified.
 
 ## Team origin and attribution
 
@@ -51,4 +51,4 @@ No additional license grant is inferred from this notice. Third-party names and 
 
 ## Validation boundary
 
-Bounded Stage 1 revalidation passes the exact code-free inventory and 16 of 16 static case-study gates. The exact Stage 1 phrase was received and the public repository was created. Google OAuth, production application deployment, GitHub Pages availability, complete keyboard/screen-reader/zoom/contrast accessibility testing, and final anonymous-clone verification are not yet claimed as complete.
+Bounded Stage 1 revalidation passes the exact code-free inventory and 16 of 16 static case-study gates. The exact Stage 1 phrase was received, and anonymous checks reached the public repository, Pages site, and social-card asset. Google OAuth, production application deployment, and complete keyboard/screen-reader/zoom/contrast accessibility testing are not claimed as complete. Future changes require renewed public-snapshot checks.

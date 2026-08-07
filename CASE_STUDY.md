@@ -12,7 +12,7 @@ The CIS 440 Workout Tracker is a beginner-oriented academic web application for 
 | Team roles | Scrum Master; Product Owner; Database / ERD Developer; Frontend / UI Developer; Frontend / Routing Developer; Backend / API Developer |
 | Application stack | Node.js, Express, MySQL, vanilla browser JavaScript, HTML, and CSS |
 | Case-study format | Code-free static site with synthetic diagrams and generated artwork |
-| Publication status | Public code-free repository created after exact Stage 1 authorization; GitHub Pages verification pending |
+| Publication status | Public code-free repository and GitHub Pages site created after exact Stage 1 authorization and anonymously verified |
 
 Other contributor names are omitted pending their individual publication preferences. Jonathan Rodriguez maintains this portfolio presentation and is identified only for contribution areas supported by the private project history; he is not the sole author.
 
@@ -191,7 +191,7 @@ Bounded final local validation is recorded below. The results apply to disposabl
 | Google OAuth and Calendar integration | Not tested |
 | Case-study HTML/CSS/link validation | 16 of 16 static validator gates passed before the final narrative update; a final rerun is recorded in the private validation report |
 | Browser keyboard, responsive, and accessibility review | Desktop, 375 px, and 320 px layouts were inspected without document overflow; static keyboard/focus/reduced-motion/forced-color support passed; keyboard-only, assistive-technology, zoom, and conformance review remain incomplete |
-| Production application deployment and GitHub Pages | No production application deployment is claimed; the public case-study repository exists and Pages remains pending verification |
+| Production application deployment and GitHub Pages | No production application deployment is claimed; the public case-study repository and static Pages site are anonymously reachable |
 | Final identity, secret, privacy, and asset scan | Local gates passed after manual review of false positives and generated images; postpublication scans remain required |
 
 The private final validation report is the controlling evidence record. A missing or skipped check remains labeled as such; no old or source-visible behavior is converted into a test result.
@@ -228,7 +228,7 @@ Current boundaries include:
 - incomplete observability, migration rollback, and operational recovery;
 - partial offline behavior rather than offline data synchronization;
 - potential performance and privacy edge cases in long-history and small-community scenarios; and
-- the code-free case-study repository was created after the exact Stage 1 phrase; GitHub Pages and anonymous-clone verification remain pending, and the source candidate remains local and unpublished.
+- the code-free case-study repository and GitHub Pages site were created after the exact Stage 1 phrase and anonymously reached; the source candidate remains local and unpublished.
 
 Priority next steps are to extend bounded authorization and privacy regression tests, exercise a disposable synthetic database, replace process-local security state with shared production controls, add mailbox verification and key-rotation procedures, improve observability, and complete keyboard/screen-reader/zoom review.
 

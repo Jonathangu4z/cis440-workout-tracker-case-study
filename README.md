@@ -8,12 +8,13 @@ Direct team authorization has not yet been obtained. This is not an official pub
 
 ## Read the case study
 
-- [Recruiter-facing site](docs/index.html)
+- [Live recruiter-facing site](https://jonathangu4z.github.io/cis440-workout-tracker-case-study/)
+- [Static site source](docs/index.html)
 - [Detailed technical narrative](CASE_STUDY.md)
 - [Origin, attribution, and asset notice](NOTICE.md)
 - [Public GitHub repository](https://github.com/Jonathangu4z/cis440-workout-tracker-case-study)
 
-The public repository was created after the exact Stage 1 case-study-only authorization. GitHub Pages remains pending deployment and anonymous verification; no Pages URL is claimed yet.
+The public repository and GitHub Pages site were created after the exact Stage 1 case-study-only authorization and verified through anonymous HTTP access.
 
 ## At a glance
 
@@ -23,7 +24,7 @@ The public repository was created after the exact Stage 1 case-study-only author
 - **Team roles:** Scrum Master; Product Owner; Database / ERD Developer; Frontend / UI Developer; Frontend / Routing Developer; Backend / API Developer
 - **Application stack described:** Node.js, Express, MySQL, vanilla browser JavaScript, HTML, and CSS
 - **Case-study format:** Static HTML/CSS, Markdown, synthetic diagrams, and generated artwork
-- **Current status:** Public code-free repository; GitHub Pages verification pending
+- **Current status:** Public code-free repository and verified GitHub Pages site
 
 ## Verified contribution boundary
 
@@ -55,7 +56,7 @@ Bounded final local validation is recorded below. These results apply only to th
 | Synthetic database testing | Not run; no local MySQL server or usable container daemon was available |
 | Google OAuth integration | Not tested |
 | Browser accessibility and responsive rendering | Static checks passed; desktop, 375 px, and 320 px layouts were inspected without document overflow; keyboard-only, assistive-technology, zoom, and conformance testing remain incomplete |
-| Production application deployment and GitHub Pages | No production application deployment is claimed; the public case-study repository exists and Pages remains pending verification |
-| Final identity, secret, privacy, and link scans | Local candidate gates passed after reviewed false positives; postpublication scans remain required |
+| Production application deployment and GitHub Pages | No production application deployment is claimed; the public case-study repository and static Pages site are anonymously reachable |
+| Final identity, secret, privacy, and link scans | Local candidate gates passed after reviewed false positives; continued postpublication checks remain required for future changes |
 
 No production readiness, deployment, accessibility conformance, OAuth validation, or complete test coverage is claimed.
