@@ -69,8 +69,21 @@ main a:not(.button),
 a:focus-visible,
 [tabindex="0"]:focus-visible {
   border-radius: 0.2rem;
-  outline: 3px solid var(--amber);
+  outline: 3px solid var(--teal);
   outline-offset: 4px;
+}
+
+.site-header a:focus-visible,
+.hero a:focus-visible,
+.architecture-section a:focus-visible,
+.lessons-section a:focus-visible,
+.site-footer a:focus-visible {
+  outline-color: var(--amber);
+}
+
+main:focus {
+  outline: 3px solid var(--teal);
+  outline-offset: -3px;
 }
 
 h1,
@@ -135,6 +148,10 @@ dd:last-child {
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+.skip-link:focus-visible {
+  outline-color: var(--deep);
 }
 
 .site-header {
@@ -261,8 +278,35 @@ dd:last-child {
   font-size: clamp(1.05rem, 1.7vw, 1.25rem);
 }
 
+.hero-role {
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6f1ee;
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
 .boundary-copy {
   max-width: 66ch;
+  margin-top: 1.5rem;
   padding-left: 1rem;
   border-left: 3px solid var(--amber);
   color: #f2f7f5;
@@ -400,12 +444,14 @@ dd:last-child {
   gap: 1rem;
 }
 
-.frame-heading h2 {
+.frame-heading h2,
+.frame-title {
   margin: 0;
   font-family: var(--font-sans);
   font-size: clamp(1.5rem, 4vw, 2.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
+  line-height: 1.12;
 }
 
 .mini-label {
@@ -495,7 +541,7 @@ dd:last-child {
 .bar-1 { height: 34%; }
 .bar-2 { height: 68%; }
 .bar-3 { height: 48%; }
-.bar-4 { height: 84%; background: var(--amber); }
+.bar-4 { height: 84%; border: 2px solid var(--orange); background: var(--amber); }
 .bar-5 { height: 61%; }
 
 .product-frame figcaption,
@@ -606,6 +652,21 @@ dd:last-child {
 
 .feature-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.workflow-list {
+  margin-bottom: 1.5rem;
+  padding-left: 1.35rem;
+}
+
+.workflow-list li {
+  padding: 0.3rem 0 0.3rem 0.25rem;
 }
 
 .feature-card {
@@ -752,6 +813,10 @@ dd:last-child {
 
 .release-section {
   background: var(--orange-pale);
+}
+
+.release-section .section-kicker {
+  color: #8f3214;
 }
 
 .release-panel {
@@ -969,6 +1034,11 @@ tbody td {
   color: var(--ink-soft);
 }
 
+.credit-note a {
+  display: inline-block;
+  min-height: 24px;
+}
+
 .site-footer {
   padding: 2rem 0;
   background: var(--deep);
@@ -985,6 +1055,10 @@ tbody td {
 .footer-inner p {
   margin: 0;
   font-size: 0.85rem;
+}
+
+.footer-links {
+  margin-top: 0.35rem !important;
 }
 
 .site-footer a {
@@ -1030,6 +1104,7 @@ tbody td {
   }
 
   .feature-grid,
+  .summary-grid,
   .decision-grid,
   .lesson-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1082,7 +1157,14 @@ tbody td {
 }
 
 @media (max-width: 520px) {
+  .nav-list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .nav-list a {
+    justify-content: center;
     padding-inline: 0.55rem;
   }
 
@@ -1097,6 +1179,7 @@ tbody td {
 
   .metric-row,
   .feature-grid,
+  .summary-grid,
   .decision-grid,
   .lesson-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1141,7 +1224,8 @@ tbody td {
   .architecture-node,
   .contribution-card,
   .feature-card,
-  .table-wrap {
+  .table-wrap,
+  .tech-list li {
     border: 1px solid CanvasText;
   }
 }
@@ -1183,10 +1267,45 @@ tbody td {
   }
 
   .light-heading > p:last-child,
+  .hero .eyebrow,
+  .hero-lede,
+  .hero-role,
+  .boundary-copy,
+  .status-list dd,
   .decision-grid p,
   .lesson-grid p,
   .architecture-node small,
   .architecture-figure figcaption {
     color: var(--ink-soft);
+  }
+
+  .status-list dt,
+  .architecture-section .section-kicker,
+  .lessons-section .section-kicker,
+  .node-label,
+  .architecture-arrow,
+  .optional-boundary span,
+  .decision-grid h3,
+  .lesson-grid article > span {
+    color: var(--teal);
+  }
+
+  .tech-list li,
+  .product-frame,
+  .status-list,
+  .architecture-figure,
+  .architecture-node,
+  .optional-boundary,
+  .decision-grid article,
+  .lesson-grid article {
+    border-color: var(--line);
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  thead th {
+    border-bottom: 2px solid var(--ink);
+    background: var(--white);
+    color: var(--ink);
   }
 }

@@ -1,254 +1,239 @@
-# CIS 440 Workout Tracker — technical case study
+# Workout Tracker Technical Case Study
 
-## 1. Project at a glance
+## 1. Executive summary
 
-The CIS 440 Workout Tracker is a beginner-oriented academic web application for planning workouts, logging completed exercises, reviewing progress, and maintaining a simple schedule.
+The CIS 440 Workout Tracker was a six-person academic team project exploring how a browser application could help beginners plan activity, log completed exercises, maintain a schedule, and review progress. The documented prototype connected a JavaScript interface to a Node.js/Express application and relational MySQL data, with an optional Google Calendar boundary.
 
-| Item | Summary |
-|---|---|
-| Context | Six-person CIS 440 academic team capstone |
-| Intended users | Beginners who need a clearer path from planning to consistent workout logging |
-| Jonathan's role | Public-release maintainer and verified frontend/routing contributor |
-| Team roles | Scrum Master; Product Owner; Database / ERD Developer; Frontend / UI Developer; Frontend / Routing Developer; Backend / API Developer |
-| Application stack | Node.js, Express, MySQL, vanilla browser JavaScript, HTML, and CSS |
-| Case-study format | Code-free static site with synthetic diagrams and generated artwork |
-| Publication status | Public code-free repository and GitHub Pages site created after exact Stage 1 authorization and anonymously verified |
+My role was **Frontend / Routing Contributor**. I contributed interface and internal-page foundations; routing and client-side navigation behavior; workout-entry and calendar prototypes; responsive exercise-catalog behavior; beginner routine planning; recovery/reminder heuristics; configurable history analytics and chart views; and selected naming, browser, routing, and server-startup maintenance. Shared backend, database, authentication, design, testing, integration, and product work were team-developed.
 
-Other contributor names are omitted pending their individual publication preferences. Jonathan Rodriguez maintains this portfolio presentation and is identified only for contribution areas supported by the private project history; he is not the sole author.
+This code-free presentation focuses on systems analysis, workflow design, dashboard thinking, implementation tradeoffs, troubleshooting, and bounded validation. It does not claim production deployment, active users, business impact, clinical effectiveness, complete security, or formal accessibility conformance.
 
-Direct team authorization has not yet been obtained. This is not an official publication or endorsement by the full team, the instructor, Arizona State University, or W. P. Carey.
+## 2. Problem and intended users
 
-## 2. The problem
+Starting a workout routine creates several connected decisions: what to train, which exercise fits available equipment, how to record a session, when to rest, and how to interpret progress. A beginner can lose continuity when planning, logging, scheduling, and reporting are separated.
 
-Beginning a workout routine creates several small but compounding decisions: what to train, which exercise fits available equipment, how to record a session, when to rest, and how to interpret progress. The team project explored how one browser-based workflow could reduce that friction without presenting itself as medical guidance or a production fitness platform.
+The team framed a single browser workflow around that problem. The intended user could browse exercises, record sets and repetitions, schedule activity, preview a beginner routine, receive transparent recovery prompts, and review summaries of recorded history. The prototype was educational software, not medical guidance or a validated fitness service.
 
-The resulting prototype joined account access, exercise browsing, workout logging, schedules, beginner planning, progress views, privacy controls, and optional calendar integration. The product goal was clarity and continuity, not invented engagement metrics or claims of real-world adoption.
+## 3. Project scope and six-person team context
 
-## 3. Users and use cases
+The academic team used Scrum-oriented roles spanning product coordination, database/ERD work, frontend/UI work, frontend/routing work, and backend/API work. Role labels explain the collaboration structure; they do not establish exclusive ownership of every feature or file.
 
-The intended user can:
-
-1. create a local account and sign in;
-2. browse exercises by muscle group and equipment;
-3. log sets, repetitions, weight, date, and notes;
-4. review workout history and progress summaries;
-5. schedule exercises and preview a beginner routine;
-6. receive rule-based recovery reminders;
-7. choose how activity appears in community views; and
-8. optionally connect a development Google Calendar account.
-
-These are source-visible prototype capabilities. They are not evidence of public deployment, clinical validation, production scale, or actual user adoption.
-
-## 4. Team and contribution boundary
-
-The application was team work. The public case study uses role-only context:
-
-- Scrum Master
-- Product Owner
-- Database / ERD Developer
-- Frontend / UI Developer
-- Frontend / Routing Developer
-- Backend / API Developer
-
-Names other than Jonathan Rodriguez are omitted pending their individual publication preferences. Roles describe collaboration context; they do not assign exclusive ownership of every file or feature. Architecture, server behavior, database design, authentication, testing, interface design, and integration include shared and other-contributor work.
-
-Private diff review supports only the bounded contribution statements below. Commit counts and private revisions are excluded because they do not measure contribution value and do not belong in this fresh public narrative.
-
-## 5. My verified contributions
-
-### Interface foundations and routing behavior
-
-- **Context:** The growing prototype needed consistent internal-page structure and dependable movement between authenticated views.
-- **My responsibility:** Contribute dashboard/internal-page foundations, navigation wiring, and client-side token-presence guard behavior.
-- **Implementation:** Vanilla HTML, CSS, and browser JavaScript organized shared layout, navigation, logout/refresh behavior, and page-entry checks.
-- **Challenge:** Client-side page guards can improve navigation flow but cannot replace server-side authorization.
-- **Action:** Kept the browser behavior focused on routing and user feedback while treating protected APIs as the real authorization boundary.
-- **Outcome:** The interface gained a more consistent path across internal views without overstating the security value of client-side checks.
-- **Evidence boundary:** Supported by private parent-to-commit diff review; private revisions are not published.
-
-### Workout entry, calendar, and catalog interaction
-
-- **Context:** Workout logging requires several related inputs, and a large exercise list can become difficult to scan on smaller screens.
-- **My responsibility:** Prototype workout-entry/calendar experiences and improve workout-catalog presentation.
-- **Implementation:** Date selection, form validation, reusable prior-entry behavior, repeated entry creation, responsive grouping, skeleton loading states, bounded initial lists, and expand/collapse controls.
-- **Challenge:** The UI had to remain understandable across loading, empty, validation, and narrow-screen states.
-- **Action:** Broke the interactions into explicit states and progressive controls rather than presenting one dense surface.
-- **Outcome:** The prototype provided clearer paths for logging work and exploring available exercises.
-- **Evidence boundary:** These are interface contributions; final data behavior and integrated product areas remain team work.
-
-### Beginner planning and recovery reminders
-
-- **Context:** New users needed help turning broad intent into a manageable schedule while avoiding repetitive training patterns.
-- **My responsibility:** Build a beginner-planning flow and product-level reminder heuristics.
-- **Implementation:** Training-day, equipment, and start-date controls; a multi-week preview; integration with workout-entry interfaces; repeated-muscle-group checks; and duplicate-notice suppression.
-- **Challenge:** Helpful guidance needed to remain deterministic and transparent rather than masquerading as medical or personalized clinical advice.
-- **Action:** Used simple rules, explicit inputs, and conservative language.
-- **Outcome:** Users could preview a routine and receive general recovery-oriented prompts within the prototype.
-- **Evidence boundary:** The reminders are interface guidance, not health advice.
-
-### Progress analytics and selected maintenance
-
-- **Context:** Raw workout history is difficult to interpret without summaries and adjustable views.
-- **My responsibility:** Build configurable history analytics and contribute selected integration maintenance.
-- **Implementation:** Summary metrics, line/bar chart views, presets, saved dashboard configuration, insight cards, and bounded naming/routing/browser/server-startup fixes.
-- **Challenge:** Visual summaries needed meaningful empty states and honest limits when data was sparse.
-- **Action:** Paired synthetic chart views with readable labels and kept maintenance claims limited to the reviewed changes.
-- **Outcome:** The dashboard made recorded activity easier to inspect and customize.
-- **Evidence boundary:** No production performance, adoption, or business-impact metric is claimed.
-
-## 6. Product functionality
-
-The final team prototype includes these source-visible areas:
+The documented prototype included:
 
 - account access and profile management;
 - exercise browsing and custom exercise creation;
-- workout logging, history, and entry editing;
+- workout logging, history, and selected entry editing;
 - schedule and calendar views;
-- deterministic routine recommendations and beginner planning;
+- rule-based recommendations and beginner planning;
 - dashboard summaries and configurable charts;
-- activity/reminder and motivational-quote surfaces;
-- privacy-aware community views;
-- a static/offline-capable PWA shell; and
+- reminder, activity, and motivational-quote surfaces;
+- privacy-aware community presentation;
+- a static/offline-capable application shell; and
 - optional Google Calendar connection and event creation.
 
-This list describes team-owned application functionality. It is intentionally separate from Jonathan's verified contribution list.
+Those product areas describe the team-developed application. The personal contribution sections below are intentionally narrower.
 
-## 7. Architecture and data flow
+## 4. Requirements and workflow framing
 
-The application follows a direct browser/server/database structure:
+The project translated the beginner-user problem into a sequence of observable states rather than one large feature list.
+
+| User need | Workflow | System response |
+|---|---|---|
+| Find an appropriate exercise | Filter or browse by muscle group and equipment | Present grouped catalog results, loading states, bounded lists, and expansion controls |
+| Record completed work | Select a date and enter exercises, sets, repetitions, weight, and notes | Validate input, submit user-scoped data, and expose reusable entry behavior |
+| Plan future activity | Choose training days, equipment, and a start date | Generate a deterministic multi-week preview and connect it to entry/schedule interfaces |
+| Avoid repetitive patterns | Record or plan activity for muscle groups | Apply simple repeated-muscle-group checks and suppress duplicate notices |
+| Understand history | Select a period, measure, and chart mode | Convert workout history into summaries, chart-ready series, empty states, and saved view settings |
+
+Important failure states included loading, empty results, invalid input, unauthorized access, offline/static-shell limits, sparse history, and unavailable provider configuration. Making those states explicit supported both interface behavior and troubleshooting.
+
+## 5. Jonathan's verified contribution areas
+
+Public contribution statements were bounded through an evidence review of the private project history. Private commits and evidence are not reproduced here.
+
+### Interface foundations and routing behavior
+
+**Need:** Internal pages required consistent structure and dependable navigation between authenticated views.
+
+**Contribution:** I worked on dashboard/internal-page foundations, navigation wiring, logout and refresh behavior, page-entry checks, and client-side token-presence routing behavior using HTML, CSS, and browser JavaScript.
+
+**Tradeoff:** A browser guard can support navigation and feedback but cannot authorize protected data. The documented design therefore treats server-side API checks as the authorization boundary.
+
+**Implemented output:** Consistent internal-page structure and explicit routing states across the contributed views.
+
+### Workout entry, calendar, and catalog interaction
+
+**Need:** Logging requires related inputs, while a large exercise list can become difficult to scan on a narrow screen.
+
+**Contribution:** I prototyped date selection, input validation, reusable prior-entry behavior, repeated entry creation, calendar interactions, responsive catalog grouping, skeleton loading, bounded initial lists, and expand/collapse controls.
+
+**Tradeoff:** Progressive disclosure reduced initial density, but every loading, empty, validation, and expanded state still required clear behavior.
+
+**Implemented output:** Explicit workout-entry and catalog states designed for both desktop and narrow layouts.
+
+### Beginner planning and recovery reminders
+
+**Need:** New users needed a structured way to turn broad intent into a manageable schedule.
+
+**Contribution:** I built training-day, equipment, and start-date controls; a multi-week routine preview; connections to workout-entry interfaces; repeated-muscle-group checks; and duplicate-notice suppression.
+
+**Tradeoff:** The guidance needed to remain deterministic and transparent rather than resemble personalized clinical advice.
+
+**Implemented output:** A rule-based planning flow and general recovery prompts whose inputs and limits can be explained.
+
+### Progress analytics and selected maintenance
+
+**Need:** Raw workout history is hard to inspect without summaries and adjustable views.
+
+**Contribution:** I built summary metrics, line and bar chart modes, presets, saved dashboard configuration, insight cards, and bounded naming/routing/browser/server-startup fixes.
+
+**Tradeoff:** Browser-side aggregation kept chart calculations close to the display layer but raised performance questions for long histories and required meaningful sparse-data states.
+
+**Implemented output:** Configurable progress views and documented maintenance changes without claiming user or business impact.
+
+## 6. Architecture and data flow
+
+The documented application used a straightforward browser/server/database structure:
 
 ```text
 Browser pages and client state
         |
-        | HTTP + bearer token for protected requests
+        | HTTP requests; bearer token for protected routes
         v
 Node.js / Express routes and business rules
         |
-        | parameterized SQL
+        | Parameterized SQL
         v
-MySQL users, exercises, workouts, entries, schedules, quotes, and OAuth tokens
+MySQL users, exercises, workouts, entries, schedules, quotes, and provider grants
 
-Optional boundary: Express <-> Google OAuth and Calendar APIs
+Optional external boundary: Express <-> Google OAuth and Calendar APIs
 ```
 
-A representative workout flow is:
+A representative workout-reporting flow was:
 
-1. the signed-in browser submits a workout and entries;
-2. the server verifies the application token and validates input;
-3. parameterized queries persist data under the authenticated user;
-4. history endpoints return owned data;
-5. dashboard code aggregates the response into synthetic metrics and chart-ready series; and
-6. optional calendar synchronization is attempted only when separately configured.
+1. The signed-in browser collected a workout and its entries.
+2. The Express application validated the request and checked the protected-route context.
+3. Parameterized queries persisted data under the authenticated user.
+4. History endpoints returned user-scoped records.
+5. Browser logic transformed the response into summary metrics and chart-ready series.
+6. Optional calendar synchronization was attempted only when separately configured.
 
-The codebase is an academic monolith rather than a service-oriented production architecture. That kept the capstone understandable but increased coupling among startup, routing, SQL, authentication, business rules, and provider integration.
+The academic monolith made the full request path approachable for a student team. It also coupled startup, routing, SQL, authentication, business rules, and provider integration more tightly than a production-oriented system would.
 
-## 8. Technical decisions
+## 7. Technical decisions and tradeoffs
 
-### Node.js and Express
+### JavaScript, Node.js, and Express
 
-A single Express application served static pages and JSON routes. The compact structure helped a student team trace end-to-end behavior, while the large server module created maintenance and test costs.
+A single Express application served static pages and JSON routes. This made browser-to-route tracing direct, but a large server surface increased maintenance and testing costs.
 
 ### Relational MySQL data
 
-Users, workouts, entries, exercises, and schedules have relationships that benefit from foreign keys and user-scoped queries. A clean public schema and synthetic reference seed are prepared separately from this code-free case study.
+Users, exercises, workouts, entries, and schedules have relationships that benefit from foreign keys and user-scoped queries. Relational modeling fit the workflow, while local database availability and migration discipline remained validation constraints.
 
-### JWT and password hashing
+### Browser routing and protected APIs
 
-The audited prototype used bearer tokens and bcrypt-based password hashing. Protected APIs, rather than client navigation guards, are the authorization boundary. The reconstructed source candidate narrows token persistence to tab-scoped session storage, checks a server-side session version, rotates that version on login and sensitive changes, adds current-password step-up for destructive account actions, and applies bounded login/registration throttles. Residual limitations include bearer-token exposure to same-origin script, single-process rate-limit state, no new-mailbox verification, and no shared multi-instance session store.
+Client-side token-presence checks supported page flow. They were not treated as a security control: protected APIs remained responsible for authorization. This distinction is important in both implementation and support documentation.
 
-### Browser analytics
+### Browser-side reporting
 
-Dashboard summaries were calculated in the browser to keep visual experimentation close to the interface. This made presets and chart changes approachable, but an unbounded history flow can create extra requests and client work.
+Calculating summaries and chart series in the browser kept chart calculations close to the display layer. The tradeoff was additional client work and possible extra requests as history grew.
 
-### PWA and calendar boundaries
+### Static shell and optional provider integration
 
-The service worker supports a static shell rather than complete offline workout tracking. Google Calendar is optional and depends on developer-supplied configuration. The reconstructed source candidate adds application-layer AES-256-GCM protection for stored provider grants, a browser-bound one-time authorization state, and best-effort provider revocation on disconnect. The live provider flow remains untested, and production key rotation, multi-instance state, consent, and event-lifecycle controls still need design work.
+The application shell supported a limited offline/static experience rather than complete offline workout synchronization. Google Calendar remained optional and configuration-dependent; the live provider flow was not validated for this case study.
 
-## 9. Security, privacy, and responsible release
+## 8. Dashboard and reporting logic
 
-The publication review treats the original team source and this case study as separate artifacts.
+The reporting work converted history records into understandable interface states rather than claiming a formal enterprise BI implementation.
 
-- This repository contains no application source, private Git history, environment file, credential, SQL data, private report, or real account/workout record.
-- Interface examples, values, and diagrams are synthetic.
-- Other contributor names are omitted pending their individual publication preferences while six-person team context and roles are retained.
-- Private screenshots, the uncertain background photograph, original project icons/logo, and unclear media are excluded.
-- The generated social card and HTML/CSS diagrams were created for this portfolio release without private media input.
-- The separate source candidate uses placeholder configuration and remains local, Git-free, and unpublished throughout Stage 1 pending direct team review and a separate Phase 2 authorization.
-- Credential material historically tracked in private source must be treated as compromised and remediated by its owners; omission does not make an old credential safe.
+The configurable views included:
 
-This is release engineering and portfolio documentation, not a security certification or legal opinion.
+- summary totals and active-period measures;
+- exercise or period-based series;
+- line and bar chart modes;
+- presets and saved display configuration;
+- insight cards and readable labels; and
+- empty and sparse-history states.
 
-## 10. Testing and validation
+This work demonstrates metric definition, report-state design, data-flow documentation, and communication of confidence boundaries. It does not demonstrate Power BI or Tableau deployment, executive adoption, production-scale data processing, or measurable business outcomes.
 
-Bounded final local validation is recorded below. The results apply to disposable local copies and remain intentionally narrower than production, database, provider, and accessibility-conformance testing.
+## 9. Troubleshooting and release lessons
 
-| Validation area | Current status |
-|---|---|
-| Source dependency installation, audit, and import checks | Clean install completed; 149 packages audited with 0 known vulnerabilities; 7 direct dependency loads passed |
-| JavaScript syntax and static source checks | Passed 28 JavaScript syntax checks, 3 JSON parses, the 76-file inventory gate, 216 local-reference/service-worker checks, and the 46-route/8-table documentation contract |
-| No-database HTTP and authentication-boundary smoke checks | 6 of 6 bounded smoke/security-regression tests passed; required-environment failure also exited safely |
-| Synthetic MySQL schema and representative CRUD | Not run; no local MySQL server or usable container daemon was available |
-| Google OAuth and Calendar integration | Not tested |
-| Case-study HTML/CSS/link validation | 16 of 16 static validator gates passed before the final narrative update; a final rerun is recorded in the private validation report |
-| Browser keyboard, responsive, and accessibility review | Desktop, 375 px, and 320 px layouts were inspected without document overflow; static keyboard/focus/reduced-motion/forced-color support passed; keyboard-only, assistive-technology, zoom, and conformance review remain incomplete |
-| Production application deployment and GitHub Pages | No production application deployment is claimed; the public case-study repository and static Pages site are anonymously reachable |
-| Final identity, secret, privacy, and asset scan | Local gates passed after manual review of false positives and generated images; postpublication scans remain required |
+### Trace the complete path
 
-The private final validation report is the controlling evidence record. A missing or skipped check remains labeled as such; no old or source-visible behavior is converted into a test result.
+A browser symptom can originate in page state, routing, an API contract, a relational dependency, or environment configuration. The selected routing, browser, naming, and startup maintenance reinforced the value of following the request from interface to data boundary.
 
-## 11. Challenges and lessons learned
+### Make failure states actionable
 
-### Follow the entire path
+Loading, empty, invalid, offline, unauthorized, and unconfigured-provider states need clear behavior. Those states help the intended user and give a teammate or support analyst a better starting point for diagnosis.
 
-A browser symptom can originate in page state, routing, an API contract, a SQL relationship, or environment configuration. Tracing the complete request path produces better fixes than treating each layer in isolation.
+### Separate evidence types
 
-### Make failure actionable
-
-Loading, empty, invalid, offline, and unauthorized states deserve explicit user feedback. Clear states help both the person using the interface and the teammate diagnosing it.
-
-### Bound confidence
-
-Static review, a smoke test, and a synthetic database test answer different questions. Naming what was and was not tested is more useful than a broad “works” claim.
+Static review, a no-database smoke test, a database test, a provider test, and a production deployment answer different questions. Recording exactly which checks ran is more useful than a broad claim that everything works.
 
 ### Design for handoffs
 
-Consistent page structure, documented boundaries, and small explainable changes make team integration easier. Release documentation is part of that handoff, not an afterthought.
+Consistent structures, bounded ownership statements, documented data flow, and small explainable changes make team integration and later support easier. The public presentation applies the same principle by separating verified personal contributions from shared product context.
 
-## 12. Limitations and future improvements
+## 10. Validation evidence
 
-Current boundaries include:
+The current case-study repository is validated as a static presentation: exact public inventory, semantic heading and fragment structure, local links and assets, canonical/Open Graph/Twitter metadata, social-card dimensions, CSS syntax, keyboard focus support, reduced-motion and forced-color rules, responsive overflow checks, privacy scanning, and live Pages readback.
 
-- no verified production deployment or production-scale evidence;
-- no current OAuth integration test;
-- no complete keyboard-only, screen-reader, zoom, contrast, or reduced-motion validation;
-- tab-scoped bearer sessions rather than hardened secure-cookie sessions;
-- in-memory, single-process abuse controls and OAuth state;
-- no verification of a replacement login mailbox and no production account-recovery flow;
-- operator-managed provider-token encryption without a tested rotation procedure;
-- incomplete observability, migration rollback, and operational recovery;
-- partial offline behavior rather than offline data synchronization;
-- potential performance and privacy edge cases in long-history and small-community scenarios; and
-- the code-free case-study repository and GitHub Pages site were created after the exact Stage 1 phrase and anonymously reached; the source candidate remains local and unpublished.
+Previously recorded application checks included dependency installation and audit, JavaScript/JSON syntax and import checks, source inventory and reference checks, and six bounded no-database smoke/security-regression tests. The dependency audit reported zero known vulnerabilities at the time it ran. These are historical audit results, not a current security guarantee.
 
-Priority next steps are to extend bounded authorization and privacy regression tests, exercise a disposable synthetic database, replace process-local security state with shared production controls, add mailbox verification and key-rotation procedures, improve observability, and complete keyboard/screen-reader/zoom review.
+Not run or not established:
 
-## 13. Transferable skills
+- synthetic MySQL end-to-end workflow testing;
+- live Google OAuth or Calendar behavior;
+- production application deployment, reliability, or scale;
+- complete keyboard, screen-reader, zoom, contrast, or formal accessibility-conformance review;
+- active-user, adoption, revenue, retention, or clinical-effectiveness evidence.
 
-This work demonstrates:
+## 11. Limitations and future improvements
 
-- systems analysis across browser, API, and relational-data layers;
-- technical troubleshooting and failure-state design;
-- dashboard and data-visualization thinking;
-- requirements interpretation and documentation;
-- privacy-aware release engineering;
-- Git collaboration without equating commit counts with value;
-- user-support-oriented interface decisions; and
-- cross-functional teamwork with explicit ownership boundaries.
+The documented prototype retains academic-project constraints: a tightly coupled server, incomplete database and provider validation, partial offline behavior, client-side reporting costs for long histories, limited operational observability, and privacy edge cases in small-community views.
 
-## 14. Credits, license, and origin
+Reasonable next steps would be to:
 
-This case study describes a six-person CIS 440 academic team capstone. Other contributor names are omitted pending their individual publication preferences. Jonathan Rodriguez maintains the public-release materials and contributed the verified areas described above; this does not imply sole authorship. Direct team authorization has not yet been obtained, and this is not an official publication or endorsement by the full team, the instructor, Arizona State University, or W. P. Carey.
+1. run representative workflows against a disposable synthetic database;
+2. strengthen automated authorization, ownership, and privacy regression tests;
+3. test the optional provider lifecycle with development-only accounts and synthetic events;
+4. measure and bound long-history reporting performance;
+5. add clearer operational logging, migration, rollback, and recovery procedures; and
+6. complete keyboard, screen-reader, zoom, reflow, and contrast review without claiming conformance before the evidence exists.
 
-The separate source candidate preserves the source project's applicable license and provenance notices. This code-free case-study candidate does not copy the application source or private history and does not silently relicense team, instructor, or third-party work.
+## 12. Transferable skills
 
-The social card and HTML/CSS diagrams are release-created assets using synthetic content. See [NOTICE.md](NOTICE.md) for the durable attribution and asset boundary.
+### IT / Systems Analysis
+
+- tracing browser, API, database, and provider boundaries;
+- interpreting requirements as workflows and failure states;
+- troubleshooting routing and environment behavior;
+- documenting validation, privacy, and support limitations.
+
+### Business Intelligence / Reporting
+
+- defining summary metrics and configurable chart views;
+- turning history data into understandable report states;
+- documenting data flow, empty states, and confidence limits;
+- communicating technical outputs to non-specialist readers.
+
+### Business / Product Analysis
+
+- framing a beginner-user problem;
+- translating needs into features and workflows;
+- balancing user experience, technical constraints, privacy, and team scope;
+- documenting handoffs and prioritized improvements.
+
+### Technical Implementation
+
+- responsive browser interfaces;
+- routing, form, loading, empty, and error states;
+- JavaScript integration in a Node/Express/MySQL application;
+- selected browser, naming, routing, and startup maintenance.
+
+## 13. Credits and notice
+
+The underlying application was developed by a six-person CIS 440 academic team. Jonathan Rodriguez maintains this independent case-study presentation and contributed only the verified areas described above; this does not imply sole authorship or official team, instructor, university, or school endorsement. Other contributors are not named here because their individual public naming preferences have not been collected for this presentation.
+
+See [NOTICE.md](NOTICE.md) for the durable attribution, privacy, media, evidence, and rights boundary. See [TEAM_SHARING.md](TEAM_SHARING.md) for neutral reuse and correction guidance for original teammates.
